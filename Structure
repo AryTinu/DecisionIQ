@@ -1,0 +1,20 @@
+DecisionIQ/
+├── README.md
+├── CONTRIBUTING.md
+├── .gitignore
+├── .env.example
+├── requirements.txt
+├── docs/
+├── data/
+├── src/
+│   └── decisioniq/
+│       ├── data_pipeline/
+│       ├── forecasting/
+│       ├── risk_detection/
+│       ├── optimization/
+│       ├── mcdm/
+│       ├── rag/
+│       ├── orchestration/
+│       ├── api/
+│       └── config.py
+└── tests/
