@@ -107,7 +107,7 @@ git push origin feature/your-module-name
 
 ## 🗺️ Development Roadmap
 
-- [ ] Data ingestion and preprocessing
+- [✅] Data ingestion and preprocessing
 - [ ] Sales and demand forecasting
 - [ ] Inventory risk and anomaly detection
 - [ ] MILP-based purchasing optimization
