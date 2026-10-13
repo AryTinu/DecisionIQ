@@ -132,7 +132,3 @@ Interested in contributing?
 Let's build DecisionIQ together and make business decision-making more intelligent, explainable, and data-driven!
 
 ---
-
-\<p align="center">
-&#x20; \<b>Built with curiosity, collaboration, and AI.\</b>
-\</p>
