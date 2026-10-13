@@ -18,3 +18,19 @@ Areas we need to build and improve:
 📈 Model evaluation, backtesting, and explainability
 
 🖥️ Frontend, backend APIs, data pipelines, and database integration
+
+
+
+
+
+Team Members follow these steps :
+step 1 - fork this repo.
+step 2 - Then clone using "git clone https://github.com/AryTinu/DecisionIQ".
+step 3 - adding features or modules always create a branch then push it.
+          git checkout - b feature/(yourMoudlename).
+step 4 - make change, then commit
+          git add.
+          git commit -m "Added this(yourMoudlename)".
+
+step 5 - push origin feature/(yourMoudlename).
+  
