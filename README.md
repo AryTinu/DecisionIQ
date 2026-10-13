@@ -119,6 +119,15 @@ git push origin feature/your-module-name
 - [ ] Frontend and backend integration
 - [ ] End-to-end testing and deployment
 
+
+
+---
+What to build first
+1. Backend: Get your existing FastAPI scaffold running and implement /health and the initial data-validation endpoints.
+2. Frontend: Create the Next.js application with a sidebar, dashboard layout, and API connection.
+3. First working feature: Upload sales/inventory data and display a data-quality summary.
+4. Then add intelligence: Forecast demand, detect inventory risks, optimize purchase quantities, and explain recommendations.
+
 ---
 
 ## 🌟 Get Involved
