@@ -48,7 +48,7 @@ Visit the [DecisionIQ repository](https://github.com/AryTinu/DecisionIQ) and cli
 Clone your own fork to your local machine. Replace `YOUR-USERNAME` with your GitHub username.
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/DecisionIQ.git
+git clone https://github.com/AryTinu/DecisionIQ.git
 cd DecisionIQ
 ```
 
