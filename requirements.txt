@@ -5,3 +5,12 @@ pydantic-settings
 pandas
 openpyxl
 python-multipart
+numpy
+scikit-learn
+xgboost
+SQLAlchemy
+alembic
+psycopg[binary]
+ortools
+langchain
+langgraph
