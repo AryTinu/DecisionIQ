@@ -1,10 +1,15 @@
-@"
+# Python environments
 .venv/
 .venv-1/
 __pycache__/
 *.py[cod]
+.pytest_cache/
+
+# Environment secrets
 .env
 .env.*
 !.env.example
-.pytest_cache/
-"@ | Set-Content .gitignore
+
+# Generated datasets
+data/raw/
+data/processed/
