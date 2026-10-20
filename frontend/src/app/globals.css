@@ -2711,3 +2711,41 @@ input:focus-visible {
     flex-direction: column;
   }
 }
+
+.login-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+
+.login-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: -12px;
+  margin-bottom: 28px;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.login-back-link:hover {
+  color: #2563eb;
+  transform: translateX(-3px);
+}
+
+.login-back-link:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+

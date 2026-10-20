@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -93,6 +92,25 @@ export default function LoginPage() {
       {/* Right login panel */}
       <section className="auth-form-section">
         <div className="auth-form-container">
+          {/* Back to home button */}
+          <Link href="/" className="login-back-link">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M19 12H5" />
+              <path d="m12 19-7-7 7-7" />
+            </svg>
+            <span>Back to Home</span>
+          </Link>
+
           <p className="auth-form-eyebrow">Account access</p>
 
           <h2>Welcome Back</h2>
