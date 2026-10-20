@@ -1,12 +1,44 @@
+
 DecisionIQ/
 ├── README.md
 ├── CONTRIBUTING.md
 ├── .gitignore
 ├── .env.example
 ├── requirements.txt
-├── docs/
-├── data/
-├── src/
+│
+├── frontend/                       # NEW: Next.js + TypeScript
+│   ├── public/
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── layout.tsx
+│   │   │   ├── page.tsx
+│   │   │   ├── globals.css
+│   │   │   ├── dashboard/
+│   │   │   ├── forecasting/
+│   │   │   ├── inventory/
+│   │   │   ├── risk-analysis/
+│   │   │   └── settings/
+│   │   ├── components/
+│   │   │   ├── ui/
+│   │   │   ├── charts/
+│   │   │   ├── dashboard/
+│   │   │   └── layout/
+│   │   ├── lib/
+│   │   │   ├── api.ts
+│   │   │   └── utils.ts
+│   │   ├── hooks/
+│   │   └── types/
+│   ├── .env.example
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── tsconfig.json
+│   ├── next.config.ts
+│   └── eslint.config.mjs
+│
+├── data/                            # Raw and processed datasets
+├── scripts/                         # Data processing and audits
+│
+├── src/                             # Python backend
 │   └── decisioniq/
 │       ├── data_pipeline/
 │       ├── forecasting/
@@ -17,4 +49,6 @@ DecisionIQ/
 │       ├── orchestration/
 │       ├── api/
 │       └── config.py
-└── tests/
+│
+├── tests/                           # Python backend tests
+└── requirements.txt
