@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from src.decisioniq.data_pipeline.File_loader import load_sales_data
+from Backend.data_pipeline.File_loader import load_sales_data
 
 
 def aggregate_daily_demand(
