@@ -1,48 +1,43 @@
+import Link from "next/link";
 
 const capabilities = [
   {
-    icon: "↗",
+    icon: "📈",
     title: "Predictive Analytics",
-    description:
-      "Forecast future sales and product demand using historical business data.",
+    description: "Forecast future sales and product demand using robust historical ML models.",
   },
   {
-    icon: "!",
+    icon: "⚠️",
     title: "Risk & Anomaly Detection",
-    description:
-      "Identify unusual patterns, potential risks, and important changes in your data.",
+    description: "Identify unexpected data variances, risk patterns, and sales anomalies early.",
   },
   {
-    icon: "◉",
+    icon: "🔀",
     title: "What-If Analysis",
-    description:
-      "Compare alternative business scenarios before making important decisions.",
+    description: "Simulate alternative business decisions and stress-test strategic scenarios.",
   },
   {
-    icon: "◎",
+    icon: "🎯",
     title: "Decision Optimization",
-    description:
-      "Evaluate possible decisions against business objectives and constraints.",
+    description: "Evaluate decisions against operational constraints and business targets.",
   },
   {
-    icon: "✳",
+    icon: "💬",
     title: "AI Business Assistant",
-    description:
-      "Ask business questions and explore insights from available data and documents.",
+    description: "Query business datasets directly through evidence-backed natural language QA.",
   },
   {
-    icon: "≡",
+    icon: "🔍",
     title: "Explainable Recommendations",
-    description:
-      "Understand the evidence and reasoning behind suggested business actions.",
+    description: "Inspect statistical proof and decision trees backing every recommendation.",
   },
 ];
 
 const workflowSteps = [
   "Upload Business Data",
-  "Prepare and Analyze Data",
-  "Forecast and Compare Outcomes",
-  "Review Insights and Recommendations",
+  "Prepare & Process",
+  "Forecast Outcomes",
+  "Review Recommendations",
 ];
 
 const performanceData = [
@@ -55,9 +50,9 @@ const performanceData = [
   { month: "Jul", actual: 75, forecast: 100 },
 ];
 
-function Brand({ light = false }: { light?: boolean }) {
+function Brand() {
   return (
-    <a className={`brand ${light ? "brand-light" : ""}`} href="#home">
+    <Link className="brand" href="/">
       <span className="brand-symbol" aria-hidden="true">
         <span />
         <span />
@@ -66,7 +61,7 @@ function Brand({ light = false }: { light?: boolean }) {
       <span>
         Decision<span className="brand-accent">IQ</span>
       </span>
-    </a>
+    </Link>
   );
 }
 
@@ -75,55 +70,49 @@ function DashboardPreview() {
     <div className="dashboard-card">
       <div className="dashboard-heading">
         <div className="dashboard-title">
-          <span className="small-logo">D</span>
-          <strong>Business Overview</strong>
+          <span className="small-logo">IQ</span>
+          <strong>Executive Business Intelligence</strong>
         </div>
-        <span className="demo-label">Illustrative demo data</span>
+        <span className="demo-label">Demo Data</span>
       </div>
 
       <div className="metric-grid">
         <div className="metric">
           <span>Total Sales</span>
           <strong>$1.24M</strong>
-          <small className="positive">+8.2%</small>
+          <small className="positive">+8.2% vs Q3</small>
         </div>
         <div className="metric">
           <span>Demand Forecast</span>
           <strong>$1.38M</strong>
-          <small>Next 90 days</small>
+          <small>Next 90 Days</small>
         </div>
         <div className="metric">
           <span>Risk Findings</span>
-          <strong>12</strong>
-          <small className="warning">3 need review</small>
+          <strong>3 Alerts</strong>
+          <small className="warning">Action required</small>
         </div>
       </div>
 
       <div className="dashboard-body">
         <div className="sales-panel">
           <div className="panel-heading">
-            <strong>Sales Performance</strong>
-            <span>Jan – Jul 2026</span>
+            <strong>Sales Performance Trend</strong>
+            <span>2026 Forecast</span>
           </div>
 
           <div className="sales-graph">
-            <div className="graph-lines">
-              <span />
-              <span />
-              <span />
-              <span />
-            </div>
             <svg
-              viewBox="0 0 360 130"
+              viewBox="0 0 320 100"
               preserveAspectRatio="none"
               role="img"
-              aria-label="Illustrative sales performance trend"
+              style={{ width: "100%", height: "100%" }}
             >
               <polyline
-                points="5,108 35,94 65,99 95,70 125,80 155,48 185,60 215,31 245,43 275,17 305,28 355,5"
+                points="5,80 40,65 80,70 120,45 160,55 200,25 240,35 280,15 315,20"
                 fill="none"
-                stroke="#35658f"
-                strokeWidth="3"
+                stroke="#2563EB"
+                strokeWidth="2.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
@@ -131,27 +120,27 @@ function DashboardPreview() {
           </div>
 
           <div className="month-labels">
-            {["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"].map(
-              (month) => (
-                <span key={month}>{month}</span>
-              ),
-            )}
+            {["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"].map((m) => (
+              <span key={m}>{m}</span>
+            ))}
           </div>
         </div>
 
         <div className="findings-panel">
-          <strong>Recent Findings</strong>
+          <div className="panel-heading">
+            <strong>Key Insights</strong>
+          </div>
           <div className="finding">
             <span className="severity high">High</span>
             <p>Regional sales deviation</p>
           </div>
           <div className="finding">
             <span className="severity medium">Medium</span>
-            <p>Product demand variance</p>
+            <p>Inventory lag alert</p>
           </div>
           <div className="finding">
             <span className="severity info">Info</span>
-            <p>Demand trend updated</p>
+            <p>Forecast recalculated</p>
           </div>
         </div>
       </div>
@@ -163,22 +152,16 @@ function PerformanceChart() {
   return (
     <div className="performance-card">
       <div className="performance-heading">
-        <strong>Quarterly Performance</strong>
-        <span className="demo-label">Illustrative demo data</span>
+        <span>Quarterly Model Accuracy</span>
+        <span className="demo-label">Demo Data</span>
       </div>
 
       <div className="bar-chart">
         {performanceData.map((item) => (
           <div className="bar-group" key={item.month}>
             <div className="bars">
-              <span
-                className="bar actual"
-                style={{ height: `${item.actual}px` }}
-              />
-              <span
-                className="bar forecast"
-                style={{ height: `${item.forecast}px` }}
-              />
+              <span className="bar actual" style={{ height: `${item.actual * 0.9}px` }} />
+              <span className="bar forecast" style={{ height: `${item.forecast * 0.9}px` }} />
             </div>
             <span className="bar-month">{item.month}</span>
           </div>
@@ -186,14 +169,8 @@ function PerformanceChart() {
       </div>
 
       <div className="chart-legend">
-        <span>
-          <i className="legend-actual" />
-          Actual
-        </span>
-        <span>
-          <i className="legend-forecast" />
-          Forecast
-        </span>
+        <span><i className="legend-actual" /> Historical Data</span>
+        <span><i className="legend-forecast" /> Model Forecast</span>
       </div>
     </div>
   );
@@ -203,59 +180,51 @@ export default function Home() {
   return (
     <>
       <header className="site-header">
-        <nav className="nav-container" aria-label="Main navigation">
+        <nav className="container-custom nav-container" aria-label="Main navigation">
           <Brand />
 
           <div className="nav-links">
             <a href="#home">Home</a>
             <a href="#features">Features</a>
             <a href="#how-it-works">How It Works</a>
-            <a href="#about">About</a>
+            <a href="#impact">About</a>
           </div>
 
           <div className="nav-actions">
-            <a className="login-link" href="/login">
+            <Link className="login-link" href="/login">
               Login
-            </a>
-            <a className="button button-primary" href="/signup">
+            </Link>
+            <Link className="button button-primary" href="/signup">
               Get Started
-            </a>
+            </Link>
           </div>
         </nav>
       </header>
 
       <main>
-        <section className="hero section-container" id="home">
+        <section className="container-custom hero" id="home">
           <div className="hero-copy">
-            <p className="eyebrow">BUSINESS DECISION INTELLIGENCE</p>
-
+            <div className="eyebrow-pill">
+              <span>✦</span> Business Decision Intelligence
+            </div>
             <h1>Make Better Decisions With Your Business Data.</h1>
-
             <p className="hero-description">
-              DecisionIQ helps businesses forecast demand, identify unusual
-              patterns, compare scenarios, and understand the evidence behind
-              important decisions.
+              DecisionIQ helps businesses forecast demand, identify unusual patterns, compare scenarios, and understand the evidence behind important decisions.
             </p>
 
             <div className="hero-actions">
-              <a className="button button-primary" href="/signup">
-                Get Started <span aria-hidden="true">→</span>
-              </a>
+              <Link className="button button-primary" href="/signup">
+                Get Started
+              </Link>
               <a className="text-link" href="#features">
-                Explore Features <span aria-hidden="true">→</span>
+                Explore Features →
               </a>
             </div>
 
             <div className="trust-points">
-              <span>
-                <i>✓</i> Clear analysis
-              </span>
-              <span>
-                <i>✓</i> Traceable evidence
-              </span>
-              <span>
-                <i>✓</i> Practical workflows
-              </span>
+              <span><i>✓</i> Verifiable Evidence</span>
+              <span><i>✓</i> Predictive Analytics</span>
+              <span><i>✓</i> Enterprise Security</span>
             </div>
           </div>
 
@@ -265,31 +234,19 @@ export default function Home() {
         </section>
 
         <section className="features-section" id="features">
-          <div className="section-container">
+          <div className="container-custom">
             <div className="section-intro">
-              <p className="eyebrow">CORE CAPABILITIES</p>
+              <p className="eyebrow-pill">Core Capabilities</p>
               <h2>Tools for Better Business Decisions</h2>
-              <p>
-                Move from historical data to meaningful insights and
-                evidence-backed business actions.
-              </p>
+              <p>Move from fragmented data spreadsheets to clear, evidence-backed strategic actions.</p>
             </div>
 
             <div className="capability-grid">
               {capabilities.map((item) => (
                 <article className="capability-card" key={item.title}>
-                  <span className="capability-icon" aria-hidden="true">
-                    {item.icon}
-                  </span>
+                  <div className="capability-icon">{item.icon}</div>
                   <h3>{item.title}</h3>
                   <p>{item.description}</p>
-                  <a
-                    className="capability-arrow"
-                    href="#how-it-works"
-                    aria-label={`Learn more about ${item.title}`}
-                  >
-                    →
-                  </a>
                 </article>
               ))}
             </div>
@@ -297,19 +254,19 @@ export default function Home() {
         </section>
 
         <section className="workflow-section" id="how-it-works">
-          <div className="section-container">
-            <p className="eyebrow">HOW IT WORKS</p>
-            <h2>A Clear Path From Data to Action</h2>
+          <div className="container-custom">
+            <div className="section-intro">
+              <p className="eyebrow-pill">Structured Workflow</p>
+              <h2>How DecisionIQ Works</h2>
+            </div>
 
             <div className="workflow-grid">
               {workflowSteps.map((step, index) => (
                 <div className="workflow-step" key={step}>
-                  <span className="step-number">0{index + 1}</span>
+                  <span className="step-number">STEP 0{index + 1}</span>
                   <div className="step-visual">
                     <span className="step-dot">{index + 1}</span>
-                    {index < workflowSteps.length - 1 && (
-                      <span className="step-connector" />
-                    )}
+                    {index < workflowSteps.length - 1 && <span className="step-connector" />}
                   </div>
                   <h3>{step}</h3>
                 </div>
@@ -318,54 +275,39 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="impact-section section-container" id="impact">
+        <section className="container-custom impact-section" id="impact">
           <div className="impact-copy">
-            <p className="eyebrow">MEASURED IMPACT</p>
-            <h2>From Business Data to Clearer Decisions</h2>
+            <p className="eyebrow-pill">Enterprise Value</p>
+            <h2 className="text-3xl font-bold">From Business Data to Clearer Decisions</h2>
 
             <ul className="impact-list">
-              <li>
-                <span>✓</span>
-                Understand historical performance and future trends.
-              </li>
-              <li>
-                <span>✓</span>
-                Identify unusual patterns and potential risks.
-              </li>
-              <li>
-                <span>✓</span>
-                Compare alternatives with supporting evidence.
-              </li>
+              <li><span>✓</span> Understand historical performance and future demand trends.</li>
+              <li><span>✓</span> Identify unusual variance patterns and business risks earlier.</li>
+              <li><span>✓</span> Compare decisions with supporting statistical evidence.</li>
             </ul>
           </div>
 
           <PerformanceChart />
         </section>
 
-        <section className="cta-section" id="about">
-          <div className="section-container cta-content">
+        <section className="cta-section">
+          <div className="container-custom cta-content">
             <div>
               <h2>Bring Clarity to Your Business Decisions</h2>
-              <p>
-                Explore your data, understand possible outcomes, and make more
-                informed decisions.
-              </p>
+              <p>Explore your data, simulate outcomes, and execute with absolute confidence.</p>
             </div>
-            <a className="button button-white" href="/signup">
-              Get Started <span aria-hidden="true">→</span>
-            </a>
+            <Link className="button button-white" href="/signup">
+              Get Started →
+            </Link>
           </div>
         </section>
       </main>
 
       <footer className="site-footer">
-        <div className="section-container footer-content">
+        <div className="container-custom footer-content">
           <div className="footer-brand">
-            <Brand light />
-            <p>
-              Integrated analytics and decision support for practical business
-              teams.
-            </p>
+            <Brand />
+            <p>Integrated decision intelligence platform designed for modern enterprise analytics.</p>
           </div>
 
           <div className="footer-column">
@@ -376,14 +318,14 @@ export default function Home() {
 
           <div className="footer-column">
             <strong>Account</strong>
-            <a href="/login">Login</a>
-            <a href="/signup">Sign Up</a>
+            <Link href="/login">Login</Link>
+            <Link href="/signup">Sign Up</Link>
           </div>
         </div>
 
-        <div className="section-container footer-bottom">
-          <span>Copyright DecisionIQ</span>
-          <span>AI-powered decision support</span>
+        <div className="container-custom footer-bottom">
+          <span>© 2026 DecisionIQ. All rights reserved.</span>
+          <span>Enterprise Analytics Workspace</span>
         </div>
       </footer>
     </>

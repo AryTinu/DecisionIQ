@@ -10,68 +10,57 @@ export default function LoginPage() {
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setMessage("");
-
-    setMessage(
-      "Prototype only — authentication is not connected yet."
-    );
+    setMessage("Prototype mode: Authentication is not connected yet.");
   }
 
   return (
     <main className="auth-page">
-      {/* Left information panel */}
+      {/* Left Information Panel */}
       <section className="auth-intro">
-        <Link href="/" className="auth-brand" aria-label="DecisionIQ home">
-          <span className="brand-icon" aria-hidden="true">
-            <svg viewBox="0 0 32 32" fill="none">
-              <rect
-                x="3"
-                y="3"
-                width="26"
-                height="26"
-                rx="7"
-                fill="currentColor"
-              />
-              <path
-                d="M9 19h5v6H9zM17 12h5v13h-5zM24 7h2v18h-2z"
-                fill="white"
-              />
-            </svg>
-          </span>
-
-          <span>
-            Decision<span className="brand-blue">IQ</span>
-          </span>
-        </Link>
-
         <div className="auth-intro-content">
-          <p className="auth-eyebrow">DECISION SUPPORT WORKSPACE</p>
+          {/* Logo with strict inline style bounds */}
+          <Link href="/" className="brand" style={{ display: "inline-flex", alignItems: "center", gap: "10px", textDecoration: "none" }}>
+            <span 
+              className="brand-symbol" 
+              style={{ width: "32px", height: "32px", minWidth: "32px", minHeight: "32px", display: "inline-flex" }} 
+              aria-hidden="true"
+            >
+              <span />
+              <span />
+              <span />
+            </span>
+            <span style={{ fontSize: "20px", fontWeight: "700", color: "#0F172A" }}>
+              Decision<span className="brand-accent">IQ</span>
+            </span>
+          </Link>
+
+          <p className="auth-form-eyebrow" style={{ marginTop: "28px" }}>
+            DECISION SUPPORT WORKSPACE
+          </p>
 
           <h1>Evidence before action.</h1>
 
           <p className="auth-intro-description">
-            Bring forecasts, risks, scenarios, and recommendations into one
-            clear workspace.
+            Bring forecasts, risks, scenarios, and recommendations into one clear workspace.
           </p>
 
           <div className="outlook-card">
             <div className="outlook-top">
-              <span>Current outlook</span>
-              <span className="demo-badge">Illustrative demo data</span>
+              <span>Current Outlook</span>
+              <span className="demo-label">Demo Data</span>
             </div>
 
-            <h2>Forecast confidence</h2>
+            <h2>Forecast Confidence</h2>
 
             <div className="confidence-row">
               <strong>88%</strong>
-
               <div
                 className="confidence-track"
                 role="progressbar"
-                aria-label="Illustrative forecast confidence"
+                aria-label="Forecast confidence"
+                aria-valuenow={88}
                 aria-valuemin={0}
                 aria-valuemax={100}
-                aria-valuenow={88}
               >
                 <span />
               </div>
@@ -81,18 +70,17 @@ export default function LoginPage() {
 
             <p className="outlook-insight">
               <span aria-hidden="true">↗</span>
-              Demand is projected to increase 8.2% next quarter.
+              Demand projected to increase 8.2% next quarter.
             </p>
           </div>
         </div>
 
-        <p className="auth-footer-label">DecisionIQ product prototype</p>
+        <p className="auth-footer-label">DecisionIQ Product Prototype v1.0</p>
       </section>
 
-      {/* Right login panel */}
+      {/* Right Login Form Panel */}
       <section className="auth-form-section">
         <div className="auth-form-container">
-          {/* Back to home button */}
           <Link href="/" className="login-back-link">
             <svg
               width="18"
@@ -111,7 +99,7 @@ export default function LoginPage() {
             <span>Back to Home</span>
           </Link>
 
-          <p className="auth-form-eyebrow">Account access</p>
+          <p className="auth-form-eyebrow">ACCOUNT ACCESS</p>
 
           <h2>Welcome Back</h2>
 
@@ -121,8 +109,7 @@ export default function LoginPage() {
 
           <form onSubmit={handleSubmit} className="auth-form">
             <div className="form-field">
-              <label htmlFor="email">Email</label>
-
+              <label htmlFor="email">Email Address</label>
               <input
                 id="email"
                 name="email"
@@ -135,7 +122,6 @@ export default function LoginPage() {
 
             <div className="form-field">
               <label htmlFor="password">Password</label>
-
               <div className="password-input-wrap">
                 <input
                   id="password"
@@ -145,11 +131,10 @@ export default function LoginPage() {
                   autoComplete="current-password"
                   required
                 />
-
                 <button
                   type="button"
                   className="password-toggle"
-                  onClick={() => setShowPassword((previous) => !previous)}
+                  onClick={() => setShowPassword((prev) => !prev)}
                   aria-label={showPassword ? "Hide password" : "Show password"}
                 >
                   {showPassword ? "Hide" : "Show"}
@@ -164,7 +149,6 @@ export default function LoginPage() {
                   checked={rememberMe}
                   onChange={(event) => setRememberMe(event.target.checked)}
                 />
-
                 <span>Remember me</span>
               </label>
 
