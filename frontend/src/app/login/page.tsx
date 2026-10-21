@@ -1,16 +1,20 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
 
 export default function LoginPage() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [message, setMessage] = useState("");
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setMessage("Prototype mode: Authentication is not connected yet.");
+
+    // Directly navigate to dashboard for prototype presentation
+    router.push("/dashboard");
   }
 
   return (
@@ -173,7 +177,7 @@ export default function LoginPage() {
           </p>
 
           <div className="auth-prototype-note">
-            Prototype only — authentication is not connected.
+            Prototype mode — navigating directly to workspace.
           </div>
         </div>
       </section>

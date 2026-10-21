@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
 
 export default function SignupPage() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [agreeToTerms, setAgreeToTerms] = useState(false);
@@ -13,9 +15,9 @@ export default function SignupPage() {
     event.preventDefault();
     setMessage("");
 
-    const form = new FormData(event.currentTarget);
-    const password = String(form.get("password") ?? "");
-    const confirmPassword = String(form.get("confirmPassword") ?? "");
+    const data = new FormData(event.currentTarget);
+    const password = String(data.get("password") ?? "");
+    const confirmPassword = String(data.get("confirmPassword") ?? "");
 
     if (password !== confirmPassword) {
       setMessage("Passwords do not match.");
@@ -23,91 +25,99 @@ export default function SignupPage() {
     }
 
     if (!agreeToTerms) {
-      setMessage("Please agree to the Terms of Service and Privacy Policy.");
+      setMessage("Please accept the Terms of Service and Privacy Policy.");
       return;
     }
 
-    setMessage(
-      "Prototype only — account registration is not connected yet."
-    );
+    // Redirect to dashboard on successful form validation
+    router.push("/dashboard");
   }
 
   return (
     <main className="auth-page">
-      {/* Left information panel */}
+      {/* Left Information Panel */}
       <section className="auth-intro">
-        <Link href="/" className="auth-brand" aria-label="DecisionIQ home">
-          <span className="brand-icon" aria-hidden="true">
-            <svg viewBox="0 0 32 32" fill="none">
-              <rect
-                x="3"
-                y="3"
-                width="26"
-                height="26"
-                rx="7"
-                fill="currentColor"
-              />
-              <path
-                d="M9 19h5v6H9zM17 12h5v13h-5zM24 7h2v18h-2z"
-                fill="white"
-              />
-            </svg>
-          </span>
-
-          <span>
-            Decision<span className="brand-blue">IQ</span>
-          </span>
-        </Link>
-
         <div className="auth-intro-content">
-          <p className="auth-eyebrow">DECISION SUPPORT WORKSPACE</p>
+          <Link
+            href="/"
+            className="brand"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "10px",
+              textDecoration: "none",
+            }}
+          >
+            <span
+              className="brand-symbol"
+              style={{
+                width: "32px",
+                height: "32px",
+                minWidth: "32px",
+                minHeight: "32px",
+                display: "inline-flex",
+              }}
+              aria-hidden="true"
+            >
+              <span />
+              <span />
+              <span />
+            </span>
+            <span
+              style={{ fontSize: "20px", fontWeight: "700", color: "#0F172A" }}
+            >
+              Decision<span className="brand-accent">IQ</span>
+            </span>
+          </Link>
+
+          <p className="auth-form-eyebrow" style={{ marginTop: "28px" }}>
+            DECISION SUPPORT WORKSPACE
+          </p>
 
           <h1>Evidence before action.</h1>
 
           <p className="auth-intro-description">
-            Bring forecasts, risks, scenarios, and recommendations into one
-            clear workspace.
+            Join DecisionIQ to forecast sales, audit risk anomalies, and generate evidence-backed recommendations.
           </p>
 
           <div className="outlook-card">
             <div className="outlook-top">
-              <span>Current outlook</span>
-              <span className="demo-badge">Illustrative demo data</span>
+              <span>Platform Standard</span>
+              <span className="demo-label">Enterprise Ready</span>
             </div>
 
-            <h2>Forecast confidence</h2>
+            <h2>What you get with DecisionIQ</h2>
 
-            <div className="confidence-row">
-              <strong>88%</strong>
-
-              <div
-                className="confidence-track"
-                role="progressbar"
-                aria-label="Illustrative forecast confidence"
-                aria-valuemin={0}
-                aria-valuemax={100}
-                aria-valuenow={88}
-              >
-                <span />
-              </div>
-            </div>
-
-            <div className="outlook-divider" />
-
-            <p className="outlook-insight">
-              <span aria-hidden="true">↗</span>
-              Demand is projected to increase 8.2% next quarter.
-            </p>
+            <ul
+              style={{
+                listStyle: "none",
+                display: "flex",
+                flexDirection: "column",
+                gap: "12px",
+                marginTop: "16px",
+                fontSize: "14px",
+                color: "#475569",
+              }}
+            >
+              <li style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                <span style={{ color: "#059669", fontWeight: "700" }}>✓</span> Automated demand forecasting models
+              </li>
+              <li style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                <span style={{ color: "#059669", fontWeight: "700" }}>✓</span> Real-time risk & anomaly detection
+              </li>
+              <li style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                <span style={{ color: "#059669", fontWeight: "700" }}>✓</span> Interactive what-if scenario simulator
+              </li>
+            </ul>
           </div>
         </div>
 
-        <p className="auth-footer-label">DecisionIQ product prototype</p>
+        <p className="auth-footer-label">DecisionIQ Product Prototype v1.0</p>
       </section>
 
-      {/* Right registration panel */}
+      {/* Right Registration Form Panel */}
       <section className="auth-form-section">
-        <div className="auth-form-container signup-form">
-          {/* Back to home button */}
+        <div className="auth-form-container">
           <Link href="/" className="login-back-link">
             <svg
               width="18"
@@ -123,11 +133,10 @@ export default function SignupPage() {
               <path d="M19 12H5" />
               <path d="m12 19-7-7 7-7" />
             </svg>
-
             <span>Back to Home</span>
           </Link>
 
-          <p className="auth-form-eyebrow">Start your workspace</p>
+          <p className="auth-form-eyebrow">GET STARTED</p>
 
           <h2>Create Your Account</h2>
 
@@ -137,8 +146,7 @@ export default function SignupPage() {
 
           <form onSubmit={handleSubmit} className="auth-form">
             <div className="form-field">
-              <label htmlFor="fullName">Full name</label>
-
+              <label htmlFor="fullName">Full Name</label>
               <input
                 id="fullName"
                 name="fullName"
@@ -150,8 +158,7 @@ export default function SignupPage() {
             </div>
 
             <div className="form-field">
-              <label htmlFor="email">Work email</label>
-
+              <label htmlFor="email">Work Email</label>
               <input
                 id="email"
                 name="email"
@@ -164,22 +171,20 @@ export default function SignupPage() {
 
             <div className="form-field">
               <label htmlFor="password">Password</label>
-
               <div className="password-input-wrap">
                 <input
                   id="password"
                   name="password"
                   type={showPassword ? "text" : "password"}
-                  placeholder="Enter your password"
+                  placeholder="At least 8 characters"
                   autoComplete="new-password"
                   minLength={8}
                   required
                 />
-
                 <button
                   type="button"
                   className="password-toggle"
-                  onClick={() => setShowPassword((previous) => !previous)}
+                  onClick={() => setShowPassword((prev) => !prev)}
                   aria-label={showPassword ? "Hide password" : "Show password"}
                 >
                   {showPassword ? "Hide" : "Show"}
@@ -188,46 +193,36 @@ export default function SignupPage() {
             </div>
 
             <div className="form-field">
-              <label htmlFor="confirmPassword">Confirm password</label>
-
+              <label htmlFor="confirmPassword">Confirm Password</label>
               <div className="password-input-wrap">
                 <input
                   id="confirmPassword"
                   name="confirmPassword"
                   type={showConfirmPassword ? "text" : "password"}
-                  placeholder="Re-enter your password"
+                  placeholder="Re-enter password"
                   autoComplete="new-password"
                   minLength={8}
                   required
                 />
-
                 <button
                   type="button"
                   className="password-toggle"
-                  onClick={() =>
-                    setShowConfirmPassword((previous) => !previous)
-                  }
-                  aria-label={
-                    showConfirmPassword
-                      ? "Hide confirm password"
-                      : "Show confirm password"
-                  }
+                  onClick={() => setShowConfirmPassword((prev) => !prev)}
+                  aria-label={showConfirmPassword ? "Hide password" : "Show password"}
                 >
                   {showConfirmPassword ? "Hide" : "Show"}
                 </button>
               </div>
             </div>
 
-            <label className="check-row terms-row">
+            <label className="check-row" style={{ marginTop: "4px" }}>
               <input
                 type="checkbox"
                 checked={agreeToTerms}
-                onChange={(event) => setAgreeToTerms(event.target.checked)}
+                onChange={(e) => setAgreeToTerms(e.target.checked)}
               />
-
               <span>
-                I agree to the <a href="#terms">Terms of Service</a> and{" "}
-                <a href="#privacy">Privacy Policy</a>.
+                I agree to the <a href="#terms" className="auth-link">Terms of Service</a> and <a href="#privacy" className="auth-link">Privacy Policy</a>.
               </span>
             </label>
 
@@ -245,6 +240,10 @@ export default function SignupPage() {
           <p className="auth-switch">
             Already have an account? <Link href="/login">Sign In</Link>
           </p>
+
+          <div className="auth-prototype-note">
+            Prototype mode — navigating directly to workspace.
+          </div>
         </div>
       </section>
     </main>
