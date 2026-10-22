@@ -1,333 +1,275 @@
 import Link from "next/link";
+import {
+  ArrowRight,
+  BarChart3,
+  BrainCircuit,
+  Boxes,
+  CheckCircle2,
+  ChevronRight,
+  ShieldCheck,
+  Sparkles,
+  TrendingUp,
+} from "lucide-react";
 
-const capabilities = [
+const features = [
   {
-    icon: "📈",
-    title: "Predictive Analytics",
-    description: "Forecast future sales and product demand using robust historical ML models.",
+    number: "01",
+    title: "Inventory Management",
+    description:
+      "Track inventory, monitor stock levels, and make informed decisions about your resources.",
+    icon: Boxes,
+    color: "blue",
+    href: "/inventory",
   },
   {
-    icon: "⚠️",
-    title: "Risk & Anomaly Detection",
-    description: "Identify unexpected data variances, risk patterns, and sales anomalies early.",
+    number: "02",
+    title: "Risk Analysis",
+    description:
+      "Identify business risks, explore potential impacts, and prioritize actions with confidence.",
+    icon: ShieldCheck,
+    color: "purple",
+    href: "/risk-analysis",
   },
   {
-    icon: "🔀",
-    title: "What-If Analysis",
-    description: "Simulate alternative business decisions and stress-test strategic scenarios.",
-  },
-  {
-    icon: "🎯",
-    title: "Decision Optimization",
-    description: "Evaluate decisions against operational constraints and business targets.",
-  },
-  {
-    icon: "💬",
-    title: "AI Business Assistant",
-    description: "Query business datasets directly through evidence-backed natural language QA.",
-  },
-  {
-    icon: "🔍",
-    title: "Explainable Recommendations",
-    description: "Inspect statistical proof and decision trees backing every recommendation.",
+    number: "03",
+    title: "Demand Forecasting",
+    description:
+      "Explore demand trends and plan future inventory with data-driven forecasting tools.",
+    icon: TrendingUp,
+    color: "green",
+    href: "/forecasting",
   },
 ];
 
-const workflowSteps = [
-  "Upload Business Data",
-  "Prepare & Process",
-  "Forecast Outcomes",
-  "Review Recommendations",
-];
+const bars = [36, 49, 42, 58, 48, 70, 62, 78, 66, 86, 75, 94];
 
-const performanceData = [
-  { month: "Jan", actual: 48, forecast: 66 },
-  { month: "Feb", actual: 70, forecast: 90 },
-  { month: "Mar", actual: 58, forecast: 76 },
-  { month: "Apr", actual: 83, forecast: 106 },
-  { month: "May", actual: 67, forecast: 86 },
-  { month: "Jun", actual: 96, forecast: 121 },
-  { month: "Jul", actual: 75, forecast: 100 },
-];
-
-function Brand() {
+export default function HomePage() {
   return (
-    <Link className="brand" href="/">
-      <span className="brand-symbol" aria-hidden="true">
-        <span />
-        <span />
-        <span />
-      </span>
-      <span>
-        Decision<span className="brand-accent">IQ</span>
-      </span>
-    </Link>
-  );
-}
+    <main className="diq-page">
+      <header className="diq-header">
+        <div className="diq-nav">
+          <Link href="/" className="diq-brand" aria-label="DecisionIQ home">
+            <span className="diq-logo">
+              <BrainCircuit size={24} />
+            </span>
+            <span>
+              Decision<span className="diq-brand-accent">IQ</span>
+            </span>
+          </Link>
 
-function DashboardPreview() {
-  return (
-    <div className="dashboard-card">
-      <div className="dashboard-heading">
-        <div className="dashboard-title">
-          <span className="small-logo">IQ</span>
-          <strong>Executive Business Intelligence</strong>
-        </div>
-        <span className="demo-label">Demo Data</span>
-      </div>
-
-      <div className="metric-grid">
-        <div className="metric">
-          <span>Total Sales</span>
-          <strong>$1.24M</strong>
-          <small className="positive">+8.2% vs Q3</small>
-        </div>
-        <div className="metric">
-          <span>Demand Forecast</span>
-          <strong>$1.38M</strong>
-          <small>Next 90 Days</small>
-        </div>
-        <div className="metric">
-          <span>Risk Findings</span>
-          <strong>3 Alerts</strong>
-          <small className="warning">Action required</small>
-        </div>
-      </div>
-
-      <div className="dashboard-body">
-        <div className="sales-panel">
-          <div className="panel-heading">
-            <strong>Sales Performance Trend</strong>
-            <span>2026 Forecast</span>
-          </div>
-
-          <div className="sales-graph">
-            <svg
-              viewBox="0 0 320 100"
-              preserveAspectRatio="none"
-              role="img"
-              style={{ width: "100%", height: "100%" }}
-            >
-              <polyline
-                points="5,80 40,65 80,70 120,45 160,55 200,25 240,35 280,15 315,20"
-                fill="none"
-                stroke="#2563EB"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-
-          <div className="month-labels">
-            {["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"].map((m) => (
-              <span key={m}>{m}</span>
-            ))}
-          </div>
-        </div>
-
-        <div className="findings-panel">
-          <div className="panel-heading">
-            <strong>Key Insights</strong>
-          </div>
-          <div className="finding">
-            <span className="severity high">High</span>
-            <p>Regional sales deviation</p>
-          </div>
-          <div className="finding">
-            <span className="severity medium">Medium</span>
-            <p>Inventory lag alert</p>
-          </div>
-          <div className="finding">
-            <span className="severity info">Info</span>
-            <p>Forecast recalculated</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function PerformanceChart() {
-  return (
-    <div className="performance-card">
-      <div className="performance-heading">
-        <span>Quarterly Model Accuracy</span>
-        <span className="demo-label">Demo Data</span>
-      </div>
-
-      <div className="bar-chart">
-        {performanceData.map((item) => (
-          <div className="bar-group" key={item.month}>
-            <div className="bars">
-              <span className="bar actual" style={{ height: `${item.actual * 0.9}px` }} />
-              <span className="bar forecast" style={{ height: `${item.forecast * 0.9}px` }} />
-            </div>
-            <span className="bar-month">{item.month}</span>
-          </div>
-        ))}
-      </div>
-
-      <div className="chart-legend">
-        <span><i className="legend-actual" /> Historical Data</span>
-        <span><i className="legend-forecast" /> Model Forecast</span>
-      </div>
-    </div>
-  );
-}
-
-export default function Home() {
-  return (
-    <>
-      <header className="site-header">
-        <nav className="container-custom nav-container" aria-label="Main navigation">
-          <Brand />
-
-          <div className="nav-links">
-            <a href="#home">Home</a>
+          <nav className="diq-nav-links" aria-label="Main navigation">
             <a href="#features">Features</a>
-            <a href="#how-it-works">How It Works</a>
-            <a href="#impact">About</a>
-          </div>
+            <a href="#platform">Platform</a>
+            <a href="#about">About</a>
+          </nav>
 
-          <div className="nav-actions">
-            <Link className="login-link" href="/login">
-              Login
+          <div className="diq-nav-actions">
+            <Link href="/login" className="diq-signin">
+              Sign in
             </Link>
-            <Link className="button button-primary" href="/signup">
-              Get Started
+            <Link href="/dashboard" className="diq-button diq-button-small">
+              Get Started <ArrowRight size={16} />
             </Link>
           </div>
-        </nav>
+        </div>
       </header>
 
-      <main>
-        <section className="container-custom hero" id="home">
-          <div className="hero-copy">
-            <div className="eyebrow-pill">
-              <span>✦</span> Business Decision Intelligence
+      <section className="diq-hero" id="about">
+        <div className="diq-hero-glow" />
+        <div className="diq-hero-grid">
+          <div className="diq-hero-copy">
+            <div className="diq-eyebrow">
+              <Sparkles size={16} />
+              Intelligent business decision platform
             </div>
-            <h1>Make Better Decisions With Your Business Data.</h1>
-            <p className="hero-description">
-              DecisionIQ helps businesses forecast demand, identify unusual patterns, compare scenarios, and understand the evidence behind important decisions.
+
+            <h1>
+              Make smarter decisions.
+              <span> Move business forward.</span>
+            </h1>
+
+            <p className="diq-hero-description">
+              Turn complex business data into clear, actionable insights.
+              Manage inventory, understand risks, and forecast demand from one
+              connected workspace.
             </p>
 
-            <div className="hero-actions">
-              <Link className="button button-primary" href="/signup">
-                Get Started
+            <div className="diq-hero-actions">
+              <Link href="/dashboard" className="diq-button">
+                Explore <ArrowRight size={18} />
               </Link>
-              <a className="text-link" href="#features">
-                Explore Features →
+              <a href="#features" className="diq-button-secondary">
+                Discover Features <ChevronRight size={18} />
               </a>
             </div>
 
-            <div className="trust-points">
-              <span><i>✓</i> Verifiable Evidence</span>
-              <span><i>✓</i> Predictive Analytics</span>
-              <span><i>✓</i> Enterprise Security</span>
+            <div className="diq-trust-row">
+              <span>
+                <CheckCircle2 size={17} /> Unified insights
+              </span>
+              <span>
+                <CheckCircle2 size={17} /> Data-driven planning
+              </span>
             </div>
           </div>
 
-          <div className="hero-visual">
-            <DashboardPreview />
-          </div>
-        </section>
-
-        <section className="features-section" id="features">
-          <div className="container-custom">
-            <div className="section-intro">
-              <p className="eyebrow-pill">Core Capabilities</p>
-              <h2>Tools for Better Business Decisions</h2>
-              <p>Move from fragmented data spreadsheets to clear, evidence-backed strategic actions.</p>
-            </div>
-
-            <div className="capability-grid">
-              {capabilities.map((item) => (
-                <article className="capability-card" key={item.title}>
-                  <div className="capability-icon">{item.icon}</div>
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="workflow-section" id="how-it-works">
-          <div className="container-custom">
-            <div className="section-intro">
-              <p className="eyebrow-pill">Structured Workflow</p>
-              <h2>How DecisionIQ Works</h2>
-            </div>
-
-            <div className="workflow-grid">
-              {workflowSteps.map((step, index) => (
-                <div className="workflow-step" key={step}>
-                  <span className="step-number">STEP 0{index + 1}</span>
-                  <div className="step-visual">
-                    <span className="step-dot">{index + 1}</span>
-                    {index < workflowSteps.length - 1 && <span className="step-connector" />}
+          <div className="diq-preview-wrap" id="platform">
+            <div className="diq-preview-decoration" />
+            <div className="diq-preview">
+              <div className="diq-preview-top">
+                <div className="diq-preview-brand">
+                  <span className="diq-preview-logo">
+                    <BrainCircuit size={19} />
+                  </span>
+                  <div>
+                    <strong>DecisionIQ</strong>
+                    <span>Business overview</span>
                   </div>
-                  <h3>{step}</h3>
                 </div>
-              ))}
+                <span className="diq-status">
+                  <span /> Platform preview
+                </span>
+              </div>
+
+              <div className="diq-preview-content">
+                <span className="diq-muted-label">YOUR WORKSPACE</span>
+                <h2>Business at a glance</h2>
+                <p className="diq-preview-subtitle">
+                  Your key business areas in one place.
+                </p>
+
+                <div className="diq-metric-grid">
+                  <div className="diq-metric-card">
+                    <div className="diq-metric-top">
+                      <span>Inventory</span>
+                      <Boxes size={18} />
+                    </div>
+                    <strong>Stock overview</strong>
+                    <span className="diq-metric-note">Inventory visibility</span>
+                  </div>
+                  <div className="diq-metric-card">
+                    <div className="diq-metric-top purple">
+                      <span>Risk analysis</span>
+                      <ShieldCheck size={18} />
+                    </div>
+                    <strong>Risk insights</strong>
+                    <span className="diq-metric-note">Risk monitoring</span>
+                  </div>
+                </div>
+
+                <div className="diq-chart-card">
+                  <div className="diq-chart-heading">
+                    <div>
+                      <strong>Performance overview</strong>
+                      <span>Illustrative trend visualization</span>
+                    </div>
+                    <BarChart3 size={20} />
+                  </div>
+
+                  <div className="diq-bars" aria-label="Illustrative chart">
+                    {bars.map((height, index) => (
+                      <div className="diq-bar-column" key={index}>
+                        <div
+                          className={`diq-bar ${
+                            index === bars.length - 1 ? "diq-bar-last" : ""
+                          }`}
+                          style={{ height: `${height}%` }}
+                        />
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="diq-chart-labels">
+                    <span>Period 1</span>
+                    <span>Period 2</span>
+                    <span>Period 3</span>
+                    <span>Period 4</span>
+                  </div>
+                </div>
+
+                <div className="diq-insight">
+                  <span className="diq-insight-icon">
+                    <Sparkles size={20} />
+                  </span>
+                  <div>
+                    <strong>One connected view</strong>
+                    <p>Explore data and make your next move with confidence.</p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </section>
-
-        <section className="container-custom impact-section" id="impact">
-          <div className="impact-copy">
-            <p className="eyebrow-pill">Enterprise Value</p>
-            <h2 className="text-3xl font-bold">From Business Data to Clearer Decisions</h2>
-
-            <ul className="impact-list">
-              <li><span>✓</span> Understand historical performance and future demand trends.</li>
-              <li><span>✓</span> Identify unusual variance patterns and business risks earlier.</li>
-              <li><span>✓</span> Compare decisions with supporting statistical evidence.</li>
-            </ul>
-          </div>
-
-          <PerformanceChart />
-        </section>
-
-        <section className="cta-section">
-          <div className="container-custom cta-content">
-            <div>
-              <h2>Bring Clarity to Your Business Decisions</h2>
-              <p>Explore your data, simulate outcomes, and execute with absolute confidence.</p>
-            </div>
-            <Link className="button button-white" href="/signup">
-              Get Started →
-            </Link>
-          </div>
-        </section>
-      </main>
-
-      <footer className="site-footer">
-        <div className="container-custom footer-content">
-          <div className="footer-brand">
-            <Brand />
-            <p>Integrated decision intelligence platform designed for modern enterprise analytics.</p>
-          </div>
-
-          <div className="footer-column">
-            <strong>Product</strong>
-            <a href="#features">Features</a>
-            <a href="#how-it-works">How It Works</a>
-          </div>
-
-          <div className="footer-column">
-            <strong>Account</strong>
-            <Link href="/login">Login</Link>
-            <Link href="/signup">Sign Up</Link>
+            <p className="diq-preview-caption">
+              Concept preview · Sample visuals, not live business data
+            </p>
           </div>
         </div>
+      </section>
 
-        <div className="container-custom footer-bottom">
-          <span>© 2026 DecisionIQ. All rights reserved.</span>
-          <span>Enterprise Analytics Workspace</span>
+      <section className="diq-features" id="features">
+        <div className="diq-section-inner">
+          <div className="diq-section-heading">
+            <span className="diq-section-kicker">THE DECISIONIQ PLATFORM</span>
+            <h2>Everything connected. Decisions simplified.</h2>
+            <p>
+              Bring your essential business workflows together and get a
+              clearer view of what needs your attention.
+            </p>
+          </div>
+
+          <div className="diq-feature-grid">
+            {features.map((feature) => {
+              const Icon = feature.icon;
+
+              return (
+                <article className="diq-feature-card" key={feature.number}>
+                  <div className="diq-feature-card-top">
+                    <span className={`diq-feature-icon ${feature.color}`}>
+                      <Icon size={23} />
+                    </span>
+                    <span className="diq-feature-number">{feature.number}</span>
+                  </div>
+                  <h3>{feature.title}</h3>
+                  <p>{feature.description}</p>
+                  <Link href={feature.href} className="diq-feature-link">
+                    Explore feature <ArrowRight size={16} />
+                  </Link>
+                </article>
+              );
+            })}
+          </div>
         </div>
+      </section>
+
+      <section className="diq-cta">
+        <div className="diq-cta-inner">
+          <div>
+            <span className="diq-cta-kicker">
+              <Sparkles size={16} /> DECISIONS START HERE
+            </span>
+            <h2>See the bigger picture.</h2>
+            <p>
+              Step into your DecisionIQ workspace to explore inventory,
+              risk analysis, and forecasting.
+            </p>
+          </div>
+          <Link href="/dashboard" className="diq-cta-button">
+            Let&apos;s Go <ArrowRight size={18} />
+          </Link>
+        </div>
+      </section>
+
+      <footer className="diq-footer">
+        <Link href="/" className="diq-brand">
+          <span className="diq-logo">
+            <BrainCircuit size={21} />
+          </span>
+          <span>
+            Decision<span className="diq-brand-accent">IQ</span>
+          </span>
+        </Link>
+        <p>Intelligent insights. Better decisions.</p>
+        <a href="#about">Back to top ↑</a>
       </footer>
-    </>
+    </main>
   );
 }
